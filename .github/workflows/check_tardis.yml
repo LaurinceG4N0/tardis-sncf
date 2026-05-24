@@ -68,8 +68,10 @@ jobs:
         with:
           fetch-depth: 1
 
-      - name: Install from requirements.txt
-        run: pip install -r requirements.txt --break-system-packages
+      - name: Install dependencies
+        run: |
+          apt-get update -qq && apt-get install -y -qq python3-pip
+          pip3 install -r requirements.txt --break-system-packages
 
       - name: Verify key imports
         run: |
@@ -90,7 +92,9 @@ jobs:
           fetch-depth: 1
 
       - name: Install dependencies
-        run: pip install -r requirements.txt nbconvert jupyter --break-system-packages
+        run: |
+          apt-get update -qq && apt-get install -y -qq python3-pip
+          pip3 install -r requirements.txt --break-system-packages
 
       - name: Prepare dataset
         run: |
@@ -147,7 +151,9 @@ jobs:
           fetch-depth: 1
 
       - name: Install dependencies
-        run: pip install -r requirements.txt --break-system-packages
+        run: |
+          apt-get update -qq && apt-get install -y -qq python3-pip
+          pip3 install -r requirements.txt --break-system-packages
 
       - name: Download artifacts
         uses: actions/download-artifact@v4
