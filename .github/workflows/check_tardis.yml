@@ -20,7 +20,7 @@ jobs:
           fetch-depth: 1
 
       - name: Install ruff
-        run: pip install ruff --break-system-packages
+        run: curl -LsSf https://astral.sh/ruff/install.sh | sh
 
       - name: Check format
         run: ruff format --check .
