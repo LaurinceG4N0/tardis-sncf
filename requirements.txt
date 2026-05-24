@@ -5,6 +5,8 @@ matplotlib
 seaborn
 ipykernel
 nbconvert
+nbformat
+jupyter-core
 jupyter-client
 streamlit
 plotly
