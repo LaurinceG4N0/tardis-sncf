@@ -1,17 +1,18 @@
 {
-  "model_type": "ExtraTreesRegressor (RandomizedSearchCV tuned)",
+  "model_type": "GradientBoostingRegressor (RandomizedSearchCV tuned)",
   "target": "Average delay of all trains at arrival",
   "best_params": {
-    "model__n_estimators": "100",
-    "model__min_samples_split": "2",
-    "model__min_samples_leaf": "2",
-    "model__max_features": "0.7",
-    "model__max_depth": "20"
+    "model__subsample": "0.7",
+    "model__n_estimators": "300",
+    "model__min_samples_split": "5",
+    "model__min_samples_leaf": "1",
+    "model__max_depth": "4",
+    "model__learning_rate": "0.1"
   },
-  "test_rmse": 3.2007223072961497,
-  "test_mae": 1.3411780015306474,
-  "test_r2": 0.6860137740142171,
-  "n_features": 20,
+  "test_rmse": 1.8468833030923675,
+  "test_mae": 0.9741545434419067,
+  "test_r2": 0.8239414956989786,
+  "n_features": 23,
   "feature_cols": [
     "Service",
     "Departure station",
@@ -32,7 +33,10 @@
     "month_sin",
     "month_cos",
     "season",
-    "is_peak_month"
+    "is_peak_month",
+    "cancellation_rate",
+    "pct_heavily_delayed",
+    "stress_score"
   ],
   "cat_cols": [
     "Service",
@@ -56,8 +60,11 @@
     "month_sin",
     "month_cos",
     "season",
-    "is_peak_month"
+    "is_peak_month",
+    "cancellation_rate",
+    "pct_heavily_delayed",
+    "stress_score"
   ],
-  "train_size": 9189,
-  "test_size": 2298
+  "train_size": 9182,
+  "test_size": 2296
 }
