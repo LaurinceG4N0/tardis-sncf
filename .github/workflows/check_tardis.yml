@@ -93,6 +93,7 @@ jobs:
 
       - name: Install dependencies
         run: |
+          apt-get update -qq && apt-get install -y -qq python3-venv
           python3 -m venv .venv
           .venv/bin/pip install -r requirements.txt
 
