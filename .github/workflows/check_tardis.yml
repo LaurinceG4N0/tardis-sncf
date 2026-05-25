@@ -93,8 +93,11 @@ jobs:
 
       - name: Install dependencies
         run: |
-          apt-get update -qq && apt-get install -y -qq python3-pip
-          pip3 install -r requirements.txt --break-system-packages
+          python3 -m venv .venv
+          .venv/bin/pip install -r requirements.txt
+
+      - name: Register kernel
+        run: .venv/bin/python -m ipykernel install --user --name=ci-venv
 
       - name: Prepare dataset
         run: |
@@ -103,22 +106,13 @@ jobs:
       - name: Execute tardis_eda.ipynb
         timeout-minutes: 10
         run: |
-          python3 -m nbconvert \
+          .venv/bin/python -m nbconvert \
             --to notebook \
             --execute \
             --inplace \
             --ExecutePreprocessor.timeout=300 \
+            --ExecutePreprocessor.kernel_name=ci-venv \
             tardis_eda.ipynb
-
-      - name: Execute tardis_model.ipynb
-        timeout-minutes: 15
-        run: |
-          python3 -m nbconvert \
-            --to notebook \
-            --execute \
-            --inplace \
-            --ExecutePreprocessor.timeout=600 \
-            tardis_model.ipynb
 
       - name: Check cleaned_dataset.csv
         run: |
@@ -127,11 +121,12 @@ jobs:
       - name: Execute tardis_model.ipynb
         timeout-minutes: 15
         run: |
-          python3 -m nbconvert \
+          .venv/bin/python -m nbconvert \
             --to notebook \
             --execute \
             --inplace \
             --ExecutePreprocessor.timeout=600 \
+            --ExecutePreprocessor.kernel_name=ci-venv \
             tardis_model.ipynb
 
       - name: Check model file
