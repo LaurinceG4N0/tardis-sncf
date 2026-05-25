@@ -103,12 +103,22 @@ jobs:
       - name: Execute tardis_eda.ipynb
         timeout-minutes: 10
         run: |
-          jupyter nbconvert \
+          python3 -m nbconvert \
             --to notebook \
             --execute \
             --inplace \
             --ExecutePreprocessor.timeout=300 \
             tardis_eda.ipynb
+
+      - name: Execute tardis_model.ipynb
+        timeout-minutes: 15
+        run: |
+          python3 -m nbconvert \
+            --to notebook \
+            --execute \
+            --inplace \
+            --ExecutePreprocessor.timeout=600 \
+            tardis_model.ipynb
 
       - name: Check cleaned_dataset.csv
         run: |
@@ -117,7 +127,7 @@ jobs:
       - name: Execute tardis_model.ipynb
         timeout-minutes: 15
         run: |
-          jupyter nbconvert \
+          python3 -m nbconvert \
             --to notebook \
             --execute \
             --inplace \
