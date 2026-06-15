@@ -9,7 +9,6 @@ import joblib
 
 df = pd.read_csv("cleaned_dataset.csv", sep=";")
 
-# Tes features exactes du model_metadata.json
 FEATURES = [
     "Service", "Departure station", "Arrival station",
     "Average journey time", "Number of scheduled trains",
