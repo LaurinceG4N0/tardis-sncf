@@ -137,8 +137,15 @@ def generer_donnees_demo():
 @st.cache_resource
 def charger_modele():
     if os.path.exists("model.joblib"):
+        try:
+            return joblib.load("model.joblib")
+        except Exception:
+            pass
+    try:
+        import train_model
         return joblib.load("model.joblib")
-    return None
+    except Exception:
+        return None
 
 
 def engineer_features(input_df: pd.DataFrame) -> pd.DataFrame:
