@@ -4,14 +4,14 @@
   "best_params": {
     "model__subsample": "0.7",
     "model__n_estimators": "300",
-    "model__min_samples_split": "5",
+    "model__min_samples_split": "2",
     "model__min_samples_leaf": "1",
-    "model__max_depth": "4",
+    "model__max_depth": "3",
     "model__learning_rate": "0.1"
   },
-  "test_rmse": 1.8468833030923675,
-  "test_mae": 0.9741545434419067,
-  "test_r2": 0.8239414956989786,
+  "test_rmse": 1.8285718194048461,
+  "test_mae": 1.0057701640673993,
+  "test_r2": 0.8274153592564567,
   "n_features": 23,
   "feature_cols": [
     "Service",
